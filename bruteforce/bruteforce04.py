@@ -1,27 +1,18 @@
-# https://www.acmicpc.net/problem/15649
-inputs = input()
-N = int(inputs.split(' ')[0])
-M = int(inputs.split(' ')[1])
-arr = []
-visit = []
-for i in range(0,N):
-    visit.append(False)
+# https://www.acmicpc.net/step/22
+# https://www.acmicpc.net/problem/1436
 
-for i in range(0,M):
-    arr.append('')
+N = int(input())
+i = 666
+cnt = 0
+while True:
+    num_str = str(i)
+    for j in range(0, len(num_str)-2):
+        if str(i)[j:j+3] == '666':
+            cnt = cnt + 1
+            break
+    if cnt == N:
+        break
+    else:
+        i = i + 1
+print(str(i))
 
-
-def dfs(n, m, d):
-    if d == m:
-        for i in range(0, m):
-            print(str(arr[i]) + ' ' if i != len(arr) else'', end='')
-        print()
-        return
-    for i in range(0,n):
-        if visit[i] == False:
-            visit[i] = True
-            arr[d] = i+1
-            dfs(n,m,d+1)
-            visit[i] = False
-
-dfs(N,M,0)
